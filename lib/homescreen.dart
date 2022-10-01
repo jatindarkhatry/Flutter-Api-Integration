@@ -1,19 +1,17 @@
 
 
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
-import 'package:api/model/Post_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class homeScreen extends StatefulWidget {
-  const homeScreen({Key key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
 
   @override
-  State<homeScreen> createState() => _homeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _homeScreenState extends State<homeScreen> {
+class _HomeScreenState extends State<HomeScreen> {
  List<Photos> photoList=[];
  Future<List<Photos>> getPhotos() async {
    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
@@ -34,7 +32,7 @@ class _homeScreenState extends State<homeScreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('API Integration'),
+          title: const Text('API Integration'),
           backgroundColor: Colors.teal,
         ),
         body: Column(
@@ -50,7 +48,7 @@ class _homeScreenState extends State<homeScreen> {
                   leading: CircleAvatar(
                     backgroundImage: NetworkImage(snapshot.data[index].url.toString()),
                   ),
-                  title: Text("My ID="+snapshot.data[index].id.toString()),
+                  title:  Text('MY ID='+snapshot.data[index].id.toString()),
                   subtitle: Text(snapshot.data[index].title.toString()),
                 );
               });
